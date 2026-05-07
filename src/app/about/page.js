@@ -25,16 +25,8 @@ export default function AboutPage() {
         {/* Fade from image to page bg at the bottom */}
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#faf9f6] to-transparent" />
 
-        {/* Name overlay bottom-left */}
-        <div className="absolute bottom-10 left-5 sm:left-8 lg:left-12">
-          <p className="font-script text-4xl sm:text-5xl text-[#1a1a17] leading-none tracking-wide"
-             style={{ textShadow: '0 2px 20px rgba(250,249,246,0.9)' }}>
-            SallyLangdown
-          </p>
-          <p className="mt-1 text-[10px] uppercase tracking-[0.35em] text-[#4a4540] font-sans">
-            Painter &amp; mixed media artist
-          </p>
-        </div>
+
+       
       </section>
 
       {/* ── Body ─────────────────────────────────────────────── */}
@@ -45,12 +37,7 @@ export default function AboutPage() {
           <div className="space-y-8 max-w-2xl">
             <div className="h-px w-12 bg-[#c4956a]" />
 
-            <p className="font-serif text-2xl sm:text-3xl text-[#1a1a17] leading-relaxed italic">
-              &ldquo;I don&rsquo;t work in a straight line. I circle things,
-              layer them, and find out what I&rsquo;m saying by the time
-              I finish.&rdquo;
-            </p>
-
+        
             <p className="font-sans text-[#4a4540] text-base sm:text-lg leading-relaxed">
               Sally Langdown has been painting for most of her life — a practice
               that began in quiet observation and grew into something much more

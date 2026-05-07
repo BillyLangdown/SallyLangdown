@@ -16,8 +16,8 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-10 pb-12 border-b border-white/10">
           {/* Name */}
           <div>
-            <p className="font-script text-4xl sm:text-5xl text-white leading-tight">
-              Sally Langdown
+            <p className="font-script text-4xl sm:text-5xl text-white leading-tight tracking-wide">
+              SallyLangdown
             </p>
             <p className="mt-2 text-white/40 text-sm font-sans">
               Original paintings and works on paper

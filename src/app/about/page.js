@@ -27,9 +27,9 @@ export default function AboutPage() {
 
         {/* Name overlay bottom-left */}
         <div className="absolute bottom-10 left-5 sm:left-8 lg:left-12">
-          <p className="font-script text-5xl sm:text-6xl text-[#1a1a17] leading-none"
-             style={{ textShadow: '0 2px 20px rgba(250,249,246,0.8)' }}>
-            Sally Langdown
+          <p className="font-script text-4xl sm:text-5xl text-[#1a1a17] leading-none tracking-wide"
+             style={{ textShadow: '0 2px 20px rgba(250,249,246,0.9)' }}>
+            SallyLangdown
           </p>
           <p className="mt-1 text-[10px] uppercase tracking-[0.35em] text-[#4a4540] font-sans">
             Painter &amp; mixed media artist

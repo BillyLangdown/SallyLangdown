@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, DM_Sans, Great_Vibes } from 'next/font/google'
+import { Cormorant_Garamond, DM_Sans, Lavishly_Yours } from 'next/font/google'
 import Navigation from '@/components/site/Navigation'
 import Footer from '@/components/site/Footer'
 import { LightboxProvider } from '@/context/LightboxContext'
@@ -20,7 +20,7 @@ const dmSans = DM_Sans({
   display: 'swap',
 })
 
-const greatVibes = Great_Vibes({
+const lavishlyYours = Lavishly_Yours({
   subsets: ['latin'],
   weight: ['400'],
   variable: '--font-great-vibes',
@@ -38,7 +38,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable} ${greatVibes.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${cormorant.variable} ${dmSans.variable} ${lavishlyYours.variable}`} suppressHydrationWarning>
       <body className="bg-[#faf9f6] text-[#1a1a17] antialiased">
         <LightboxProvider>
           <Navigation />

@@ -44,9 +44,9 @@ export default function Navigation() {
           {/* Logo / name */}
           <Link
             href="/"
-            className="font-script text-3xl sm:text-4xl text-[#1a1a17] hover:text-[#c4956a] transition-colors duration-300 leading-none"
+            className="font-script text-2xl sm:text-[1.7rem] text-[#1a1a17] hover:text-[#c4956a] transition-colors duration-300 leading-none tracking-wide"
           >
-            Sally Langdown
+            SallyLangdown
           </Link>
 
           {/* Desktop nav */}

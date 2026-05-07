@@ -12,6 +12,7 @@
 
   --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+  --font-script: var(--font-great-vibes), cursive;
 }
 
 *,
@@ -133,8 +134,9 @@ body {
 .delay-500 { animation-delay: 500ms; }
 
 /* ─── Typography ─── */
-.font-serif { font-family: var(--font-serif); }
-.font-sans  { font-family: var(--font-sans); }
+.font-serif  { font-family: var(--font-serif); }
+.font-sans   { font-family: var(--font-sans); }
+.font-script { font-family: var(--font-script), cursive; }
 
 /* Selection colour */
 ::selection {

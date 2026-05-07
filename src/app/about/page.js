@@ -11,22 +11,37 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="page-enter">
-      {/* ── Hero ────────────────────────────────────────────── */}
-      <section className="pt-28 sm:pt-36 pb-16 sm:pb-20 px-5 sm:px-8 lg:px-12 max-w-[1400px] mx-auto">
-        <div className="max-w-3xl">
-          <p className="text-[10px] uppercase tracking-[0.35em] text-[#9a9490] font-sans mb-5">
-            The artist
+
+      {/* ── Full-bleed portrait hero ───────────────────────── */}
+      <section className="relative w-full h-[60vh] sm:h-[75vh] overflow-hidden bg-[#f2ede7]">
+        <Image
+          src="/artist-photo.jpg"
+          alt="Sally Langdown"
+          fill
+          className="object-cover object-top"
+          priority
+          sizes="100vw"
+        />
+        {/* Fade from image to page bg at the bottom */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#faf9f6] to-transparent" />
+
+        {/* Name overlay bottom-left */}
+        <div className="absolute bottom-10 left-5 sm:left-8 lg:left-12">
+          <p className="font-script text-5xl sm:text-6xl text-[#1a1a17] leading-none"
+             style={{ textShadow: '0 2px 20px rgba(250,249,246,0.8)' }}>
+            Sally Langdown
           </p>
-          <h1 className="font-serif italic text-5xl sm:text-6xl lg:text-7xl text-[#1a1a17] leading-[1.05] tracking-wide">
-            Colour, pattern,<br className="hidden sm:block" /> and the long game.
-          </h1>
+          <p className="mt-1 text-[10px] uppercase tracking-[0.35em] text-[#4a4540] font-sans">
+            Painter &amp; mixed media artist
+          </p>
         </div>
       </section>
 
-      {/* ── Main content ─────────────────────────────────────── */}
-      <section className="px-5 sm:px-8 lg:px-12 max-w-[1400px] mx-auto pb-20 sm:pb-28">
-        <div className="grid lg:grid-cols-[1fr_380px] gap-14 lg:gap-20">
-          {/* Text */}
+      {/* ── Body ─────────────────────────────────────────────── */}
+      <section className="px-5 sm:px-8 lg:px-12 max-w-[1400px] mx-auto pt-12 pb-20 sm:pb-28">
+        <div className="grid lg:grid-cols-[1fr_340px] gap-14 lg:gap-20">
+
+          {/* Text column */}
           <div className="space-y-8 max-w-2xl">
             <div className="h-px w-12 bg-[#c4956a]" />
 
@@ -77,20 +92,8 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Sidebar */}
-          <div className="flex flex-col gap-8 lg:pt-10">
-            {/* Artist photo */}
-            <div className="relative aspect-[3/4] overflow-hidden bg-[#f2ede7]">
-              <Image
-                src="/artist-photo.jpg"
-                alt="Sally Langdown"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 1024px) 100vw, 380px"
-              />
-            </div>
-
-            {/* Collection navigator */}
+          {/* Sidebar — collection navigator */}
+          <div className="lg:pt-4">
             <div className="bg-[#f2ede7] p-8">
               <p className="text-[9px] uppercase tracking-[0.35em] text-[#9a9490] font-sans mb-5">
                 Explore the work
@@ -118,6 +121,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+
         </div>
       </section>
     </div>

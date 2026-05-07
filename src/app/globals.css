@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-canvas: #faf9f6;
+  --color-canvas-warm: #f2ede7;
+  --color-ink: #1a1a17;
+  --color-ink-soft: #4a4540;
+  --color-muted: #9a9490;
+  --color-accent: #c4956a;
+  --color-accent-soft: #f0e6dc;
+  --color-border: #e6dfd7;
+
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #faf9f6;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #1a1a17;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Gallery Wall (CSS Masonry columns) ─── */
+.gallery-wall {
+  columns: 1;
+  column-gap: 10px;
+}
+@media (min-width: 640px) {
+  .gallery-wall {
+    columns: 2;
+    column-gap: 12px;
+  }
+}
+@media (min-width: 1024px) {
+  .gallery-wall {
+    columns: 3;
+    column-gap: 14px;
+  }
+}
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 10px;
+}
+@media (min-width: 640px) {
+  .gallery-item { margin-bottom: 12px; }
+}
+@media (min-width: 1024px) {
+  .gallery-item { margin-bottom: 14px; }
+}
+
+/* ─── Collection Room (2-col desktop) ─── */
+.collection-wall {
+  columns: 1;
+  column-gap: 10px;
+}
+@media (min-width: 640px) {
+  .collection-wall {
+    columns: 2;
+    column-gap: 12px;
+  }
+}
+@media (min-width: 1280px) {
+  .collection-wall {
+    columns: 3;
+    column-gap: 14px;
+  }
+}
+.collection-item {
+  break-inside: avoid;
+  margin-bottom: 10px;
+}
+
+/* ─── Scrollbar hide ─── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Animations ─── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.35s ease-out both;
+}
+
+/* Page entrance */
+.page-enter {
+  animation: fade-up 0.6s ease-out both;
+}
+
+/* ─── Stagger delays ─── */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* ─── Typography ─── */
+.font-serif { font-family: var(--font-serif); }
+.font-sans  { font-family: var(--font-sans); }
+
+/* Selection colour */
+::selection {
+  background-color: #f0e6dc;
+  color: #1a1a17;
+}

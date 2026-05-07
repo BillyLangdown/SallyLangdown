@@ -39,7 +39,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable} ${lavishlyYours.variable}`} suppressHydrationWarning>
-      <body className="bg-[#faf9f6] text-[#1a1a17] antialiased">
+      <body className="bg-[#faf9f6] text-[#1a1a17] antialiased" suppressHydrationWarning>
         <LightboxProvider>
           <Navigation />
           <main>{children}</main>

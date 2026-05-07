@@ -26,6 +26,12 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
+# Artwork images — kept on disk, not tracked in git
+public/*.jpg
+public/*.jpeg
+public/*.png
+public/*.webp
+
 # Editor
 .vscode/
 .idea/

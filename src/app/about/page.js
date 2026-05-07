@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { categories } from '@/data/artworks'
 
@@ -24,7 +25,7 @@ export default function AboutPage() {
 
       {/* ── Main content ─────────────────────────────────────── */}
       <section className="px-5 sm:px-8 lg:px-12 max-w-[1400px] mx-auto pb-20 sm:pb-28">
-        <div className="grid lg:grid-cols-[1fr_360px] gap-14 lg:gap-20">
+        <div className="grid lg:grid-cols-[1fr_380px] gap-14 lg:gap-20">
           {/* Text */}
           <div className="space-y-8 max-w-2xl">
             <div className="h-px w-12 bg-[#c4956a]" />
@@ -76,10 +77,22 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Sidebar — what to look at */}
-          <div className="lg:pt-20">
-            <div className="bg-[#f2ede7] p-8 sm:p-10">
-              <p className="text-[9px] uppercase tracking-[0.35em] text-[#9a9490] font-sans mb-6">
+          {/* Sidebar */}
+          <div className="flex flex-col gap-8 lg:pt-10">
+            {/* Artist photo */}
+            <div className="relative aspect-[3/4] overflow-hidden bg-[#f2ede7]">
+              <Image
+                src="/artist-photo.jpg"
+                alt="Sally Langdown"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 380px"
+              />
+            </div>
+
+            {/* Collection navigator */}
+            <div className="bg-[#f2ede7] p-8">
+              <p className="text-[9px] uppercase tracking-[0.35em] text-[#9a9490] font-sans mb-5">
                 Explore the work
               </p>
               <div className="space-y-1">

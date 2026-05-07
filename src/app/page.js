@@ -8,35 +8,47 @@ export const metadata = {
     'Original paintings and works on paper. Oil portraits, charcoal animal studies, expressive florals, and layered mixed media.',
 }
 
-// Curated homepage sequence — mix categories and aspect ratios for a balanced hanging
+// Curated sequence — mixes categories and alternates landscape/portrait
+// to create a balanced, varied gallery wall
 const homepageOrder = [
-  'floral-1',
-  'portrait-1',
-  'animal-1',
-  'mixed-1',
-  'portrait-3',
-  'floral-3',
-  'animal-4',
-  'mixed-2',
-  'portrait-2',
-  'floral-2',
-  'animal-2',
-  'mixed-3',
-  'portrait-6',
-  'floral-4',
-  'animal-5',
-  'mixed-5',
-  'portrait-4',
-  'floral-5',
-  'animal-3',
-  'mixed-4',
-  'portrait-5',
-  'floral-6',
-  'animal-6',
-  'mixed-6',
+  "floral-abstract",        // landscape — opens strong with colour
+  "portrait-ben",           // portrait
+  "mixed-silhouette",       // portrait
+  "animal-cow-1",           // portrait
+  "mixed-woman-3",          // square — visual pause
+  "floral-elegant",         // portrait
+  "portrait-old-man",       // portrait
+  "animal-alfie",           // portrait
+  "mixed-hannah",           // portrait
+  "floral-1",               // portrait
+  "portrait-hannah",        // portrait
+  "mixed-woman-1",          // portrait
+  "animal-two-dogs",        // landscape
+  "floral-acrylic",         // portrait
+  "portrait-two-men",       // landscape
+  "mixed-floral",           // landscape
+  "animal-cow-2",           // portrait
+  "mixed-eyes",             // landscape
+  "portrait-father-christmas", // portrait
+  "floral-experimental",    // portrait
+  "mixed-woman-4",          // portrait
+  "animal-ram",             // landscape
+  "floral-2",               // portrait
+  "mixed-cats",             // portrait
+  "portrait-experimental",  // portrait
+  "floral-pears",           // portrait
+  "mixed-floral-exp",       // portrait
+  "portrait-teenage-ben",   // portrait
+  "floral-apple",           // landscape
+  "mixed-woman-2",          // portrait
+  "mixed-woman-7",          // portrait
+  "floral-pears",           // portrait (repeat removed below)
 ]
 
+// Deduplicate and resolve
+const seen = new Set()
 const homepageArtworks = homepageOrder
+  .filter((id) => { if (seen.has(id)) return false; seen.add(id); return true })
   .map((id) => artworks.find((a) => a.id === id))
   .filter(Boolean)
 

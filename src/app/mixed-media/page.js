@@ -3,7 +3,7 @@ import { getByCategory, categories } from '@/data/artworks'
 
 export const metadata = {
   title: 'Mixed Media',
-  description: 'Layered, experimental works. Collage, paint, pattern, and memory.',
+  description: 'Layered, experimental works. Collage, paint, pattern.',
 }
 
 export default function MixedMediaPage() {
@@ -11,11 +11,12 @@ export default function MixedMediaPage() {
   const category = categories.find((c) => c.slug === 'mixed-media')
 
   return (
-    <section className="pt-28 sm:pt-32 pb-20 sm:pb-28 px-5 sm:px-8 lg:px-12 max-w-[1400px] mx-auto page-enter">
+    <section className="pt-28 sm:pt-32 pb-20 sm:pb-28 px-6 sm:px-10 lg:px-16 xl:px-20 max-w-[1400px] mx-auto page-enter">
       <CollectionRoom
         artworks={artworks}
         label={category.label}
         description={category.description}
+        category="mixed-media"
       />
     </section>
   )

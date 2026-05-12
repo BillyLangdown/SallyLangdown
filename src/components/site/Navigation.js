@@ -13,153 +13,238 @@ const collections = [
 
 export default function Navigation() {
   const pathname = usePathname()
+
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
+
     window.addEventListener('scroll', onScroll, { passive: true })
+
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close menu on route change
-  useEffect(() => { setMenuOpen(false) }, [pathname])
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname])
 
-  // Lock scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+
+    return () => {
+      document.body.style.overflow = ''
+    }
   }, [menuOpen])
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-400 ${
-          scrolled
-            ? 'bg-[#faf9f6]/95 backdrop-blur-sm border-b border-[#e6dfd7]'
-            : 'bg-transparent border-b border-transparent'
-        }`}
+        className={`
+          fixed top-0 left-0 right-0 z-50
+          transition-all duration-500
+          ${
+            scrolled
+              ? 'bg-[rgba(245,240,232,0.92)] backdrop-blur-xl border-b border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]'
+              : 'bg-[rgba(245,240,232,0.72)] backdrop-blur-md'
+          }
+        `}
       >
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between h-16 sm:h-18">
-          {/* Logo / name */}
+        <div className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 h-[74px] flex items-center justify-between">
+
+          {/* LOGO */}
           <Link
             href="/"
-            className="font-script text-2xl sm:text-[1.7rem] text-[#1a1a17] hover:text-[#c4956a] transition-colors duration-300 leading-none tracking-wide"
+            className="
+              font-logo
+              text-[2rem]
+              sm:text-[2.2rem]
+              leading-none
+              tracking-[-0.03em]
+              text-[var(--color-ink)]
+              transition-opacity duration-300
+              hover:opacity-70
+            "
           >
-            SallyLangdown
+            Sally Langdown
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            <div className="flex items-center gap-6">
-              {collections.map(({ href, label }) => (
+          {/* DESKTOP NAV */}
+          <nav className="hidden md:flex items-center gap-3">
+
+            {collections.map(({ href, label }) => {
+              const active = pathname === href
+
+              return (
                 <Link
                   key={href}
                   href={href}
-                  className={`text-[11px] uppercase tracking-[0.18em] font-sans transition-colors duration-200 ${
-                    pathname === href
-                      ? 'text-[#c4956a]'
-                      : 'text-[#4a4540] hover:text-[#1a1a17]'
-                  }`}
+                  className={`
+                    px-4 py-2 rounded-full
+                    text-[11px]
+                    uppercase
+                    tracking-[0.18em]
+                    transition-all duration-300
+                    border
+                    ${
+                      active
+                        ? 'bg-white border-black/10 text-[var(--color-ink)] shadow-[0_6px_20px_rgba(0,0,0,0.05)]'
+                        : 'border-transparent text-[var(--color-ink-soft)] hover:bg-white/70 hover:border-black/5 hover:text-[var(--color-ink)]'
+                    }
+                  `}
                 >
                   {label}
                 </Link>
-              ))}
-            </div>
+              )
+            })}
 
-            <div className="w-px h-4 bg-[#e6dfd7]" />
+            <div className="w-px h-5 bg-black/8 mx-2" />
 
-            <div className="flex items-center gap-6">
-              <Link
-                href="/about"
-                className={`text-[11px] uppercase tracking-[0.18em] font-sans transition-colors duration-200 ${
+            <Link
+              href="/about"
+              className={`
+                px-4 py-2 rounded-full
+                text-[11px]
+                uppercase
+                tracking-[0.18em]
+                transition-all duration-300
+                border
+                ${
                   pathname === '/about'
-                    ? 'text-[#c4956a]'
-                    : 'text-[#4a4540] hover:text-[#1a1a17]'
-                }`}
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className={`text-[11px] uppercase tracking-[0.18em] font-sans transition-colors duration-200 ${
-                  pathname === '/contact'
-                    ? 'text-[#c4956a]'
-                    : 'text-[#4a4540] hover:text-[#1a1a17]'
-                }`}
-              >
-                Contact
-              </Link>
-            </div>
+                    ? 'bg-white border-black/10 text-[var(--color-ink)] shadow-[0_6px_20px_rgba(0,0,0,0.05)]'
+                    : 'border-transparent text-[var(--color-ink-soft)] hover:bg-white/70 hover:border-black/5 hover:text-[var(--color-ink)]'
+                }
+              `}
+            >
+              About
+            </Link>
+
+            <Link
+              href="/contact"
+              className="
+                ml-1
+                px-5 py-2
+                rounded-full
+                text-[11px]
+                uppercase
+                tracking-[0.18em]
+                bg-[var(--color-ink)]
+                text-white
+                transition-all duration-300
+                hover:opacity-85
+                hover:-translate-y-[1px]
+              "
+            >
+              Contact
+            </Link>
           </nav>
 
-          {/* Mobile hamburger */}
+          {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex flex-col gap-[5px] p-2 -mr-2 focus:outline-none"
+            className="md:hidden flex flex-col gap-[5px] p-2 -mr-2"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             <span
-              className={`block w-5 h-px bg-[#1a1a17] transition-all duration-300 origin-center ${
-                menuOpen ? 'rotate-45 translate-y-[7px]' : ''
-              }`}
+              className={`
+                block w-5 h-px bg-[var(--color-ink)]
+                transition-all duration-300 origin-center
+                ${menuOpen ? 'rotate-45 translate-y-[6px]' : ''}
+              `}
             />
+
             <span
-              className={`block w-5 h-px bg-[#1a1a17] transition-all duration-300 ${
-                menuOpen ? 'opacity-0 scale-x-0' : ''
-              }`}
+              className={`
+                block w-5 h-px bg-[var(--color-ink)]
+                transition-all duration-300
+                ${menuOpen ? 'opacity-0 scale-x-0' : ''}
+              `}
             />
+
             <span
-              className={`block w-5 h-px bg-[#1a1a17] transition-all duration-300 origin-center ${
-                menuOpen ? '-rotate-45 -translate-y-[7px]' : ''
-              }`}
+              className={`
+                block w-5 h-px bg-[var(--color-ink)]
+                transition-all duration-300 origin-center
+                ${menuOpen ? '-rotate-45 -translate-y-[6px]' : ''}
+              `}
             />
           </button>
         </div>
       </header>
 
-      {/* Mobile menu overlay */}
+      {/* MOBILE MENU */}
       <div
-        className={`fixed inset-0 z-30 bg-[#faf9f6] flex flex-col transition-all duration-500 md:hidden ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`
+          fixed inset-0 z-40 md:hidden
+          bg-[var(--color-canvas)]
+          transition-all duration-500
+          ${
+            menuOpen
+              ? 'opacity-100 pointer-events-auto'
+              : 'opacity-0 pointer-events-none'
+          }
+        `}
       >
-        <div className="flex-1 flex flex-col justify-center px-8 pb-20">
-          {/* Collection links */}
-          <div className="mb-10">
-            <p className="text-[9px] uppercase tracking-[0.35em] text-[#9a9490] mb-6 font-sans">
-              Collections
-            </p>
-            <div className="flex flex-col gap-2">
-              {collections.map(({ href, label }, i) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`font-serif italic text-4xl sm:text-5xl leading-tight transition-colors duration-200 ${
-                    pathname === href ? 'text-[#c4956a]' : 'text-[#1a1a17] hover:text-[#c4956a]'
-                  } animate-fade-up`}
-                  style={{ animationDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
+
+        <div className="absolute top-0 right-0 w-[260px] h-[260px] rounded-full bg-[#7aa7a3]/10 blur-[80px]" />
+
+        <div className="absolute bottom-0 left-0 w-[220px] h-[220px] rounded-full bg-[#d9b49b]/10 blur-[70px]" />
+
+        <div className="relative z-10 flex flex-col justify-center h-full px-8 pt-24 pb-16">
+
+          <div className="flex flex-col gap-2">
+
+            {collections.map(({ href, label }, i) => (
+              <Link
+                key={href}
+                href={href}
+                className={`
+                  text-[2.7rem]
+                  leading-[0.95]
+                  tracking-[-0.05em]
+                  transition-all duration-300
+                  ${
+                    pathname === href
+                      ? 'text-[var(--color-ink)]'
+                      : 'text-[var(--color-ink-soft)]'
+                  }
+                  animate-fade-up
+                `}
+                style={{
+                  animationDelay: menuOpen ? `${i * 70}ms` : '0ms',
+                }}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
 
-          {/* Secondary links */}
-          <div className="border-t border-[#e6dfd7] pt-8 flex flex-col gap-4">
+          <div className="mt-12 pt-8 border-t border-black/8 flex flex-col gap-5">
+
             <Link
               href="/about"
-              className="text-[12px] uppercase tracking-[0.25em] text-[#4a4540] hover:text-[#c4956a] transition-colors font-sans"
+              className="
+                text-[12px]
+                uppercase
+                tracking-[0.2em]
+                text-[var(--color-ink-soft)]
+              "
             >
               About
             </Link>
+
             <Link
               href="/contact"
-              className="text-[12px] uppercase tracking-[0.25em] text-[#4a4540] hover:text-[#c4956a] transition-colors font-sans"
+              className="
+                text-[12px]
+                uppercase
+                tracking-[0.2em]
+                text-[var(--color-ink-soft)]
+              "
             >
               Contact
             </Link>
+
           </div>
         </div>
       </div>

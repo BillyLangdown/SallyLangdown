@@ -5,15 +5,28 @@ import { categories } from '@/data/artworks'
 export const metadata = {
   title: 'About',
   description:
-    'Sally Langdown is a painter and mixed media artist working across oil, charcoal, and collage.',
+    'Sally Langdown is a painter working across oil, charcoal and mixed media.',
+}
+
+const categoryAccents = {
+  portraits: '#e8b89a',
+  animals: '#7a9e7e',
+  florals: '#e8766a',
+  'mixed-media': '#2d8b8b',
 }
 
 export default function AboutPage() {
   return (
     <div className="page-enter">
 
-      {/* ── Full-bleed portrait hero ───────────────────────── */}
-      <section className="relative w-full h-[60vh] sm:h-[75vh] overflow-hidden bg-[#f2ede7]">
+      {/* ── HERO ───────────────────────────────────── */}
+      <section className="relative w-full min-h-[65vh] sm:min-h-[80vh] overflow-hidden bg-[var(--color-canvas)]">
+
+        {/* soft atmosphere */}
+        <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-[#7aa7a3]/10 blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-[#d9b49b]/10 blur-[90px] pointer-events-none" />
+
+        {/* photo */}
         <Image
           src="/artist-photo.jpg"
           alt="Sally Langdown"
@@ -22,91 +35,118 @@ export default function AboutPage() {
           priority
           sizes="100vw"
         />
-        {/* Fade from image to page bg at the bottom */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#faf9f6] to-transparent" />
 
+        {/* simple fade */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--color-canvas)]/20 to-[var(--color-canvas)]" />
 
-       
+        {/* name */}
+        <div className="absolute bottom-10 left-6 sm:left-10 lg:left-16 xl:left-20 z-10">
+          <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--color-ink-soft)] mb-3">
+            the artist
+          </p>
+
+          <h1 className="text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.04em] text-[var(--color-ink)]">
+            Sally<br />Langdown
+          </h1>
+        </div>
+
       </section>
 
-      {/* ── Body ─────────────────────────────────────────────── */}
-      <section className="px-5 sm:px-8 lg:px-12 max-w-[1400px] mx-auto pt-12 pb-20 sm:pb-28">
-        <div className="grid lg:grid-cols-[1fr_340px] gap-14 lg:gap-20">
+      {/* ── BODY ───────────────────────────────────── */}
+      <section className="px-6 sm:px-10 lg:px-16 xl:px-20 max-w-[1400px] mx-auto pt-16 pb-24 sm:pb-32">
 
-          {/* Text column */}
-          <div className="space-y-8 max-w-2xl">
-            <div className="h-px w-12 bg-[#c4956a]" />
+        <div className="grid lg:grid-cols-[1fr_320px] gap-14 lg:gap-20">
 
-        
-            <p className="font-sans text-[#4a4540] text-base sm:text-lg leading-relaxed">
-              Sally Langdown has been painting for most of her life — a practice
-              that began in quiet observation and grew into something much more
-              expressive and layered. She works in oils on canvas, charcoal and
-              graphite on paper, and mixed media that draws freely on collage,
-              pattern, and found material.
+          {/* TEXT */}
+          <div className="space-y-7 max-w-2xl">
+
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-[2px] bg-[#2d8b8b]" />
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--color-ink-soft)]">
+                about the work
+              </p>
+            </div>
+
+            <p className="text-[var(--color-ink-soft)] text-base sm:text-lg leading-relaxed">
+              Sally has been painting for most of her life. What started as sketching and observation
+              has grown into a practice across oil paint, charcoal, graphite and mixed media.
             </p>
 
-            <p className="font-sans text-[#4a4540] text-base sm:text-lg leading-relaxed">
-              Her portraits are painted from life and from memory — studies of
-              presence, of stillness, of the quality of light on a familiar face.
-              Her animal work is built from close observation: each piece is an
-              attempt to capture character rather than likeness. Her florals are
-              something else entirely — bolder, more joyful, a space where colour
-              is allowed to do whatever it wants.
+            <p className="text-[var(--color-ink-soft)] text-base sm:text-lg leading-relaxed">
+              The portraits are usually from real people or memory. They’re not about perfection,
+              more about character, expression and presence. The animal drawings are similar —
+              focused on personality rather than detail.
             </p>
 
-            <p className="font-sans text-[#4a4540] text-base sm:text-lg leading-relaxed">
-              The mixed media work is where all of these threads come together.
-              Layers of paint, collaged material, handwritten text, and repeated
-              pattern sit alongside one another until something cohesive and
-              personal emerges. It is, perhaps, the most honest part of the work.
+            <p className="text-[var(--color-ink-soft)] text-base sm:text-lg leading-relaxed">
+              The florals are the loosest work. More colour-led, more instinctive, less structured.
+              They’re where she lets things go a bit.
             </p>
 
-            <p className="font-sans text-[#4a4540] text-base sm:text-lg leading-relaxed">
-              She lives and works in the UK, and shows her work at local exhibitions
-              and events throughout the year. Pieces are available for purchase
-              directly; enquiries are always welcome.
+            {/* quote */}
+            <blockquote className="pl-6 border-l-2 border-[#2d8b8b] my-6">
+              <p className="text-[var(--color-ink)] text-lg sm:text-xl italic leading-relaxed">
+                Paint, layer, take things away, add things back in, until it feels right.
+              </p>
+            </blockquote>
+
+            <p className="text-[var(--color-ink-soft)] text-base sm:text-lg leading-relaxed">
+              The mixed media work brings everything together. It’s more experimental — combining paint,
+              collage, texture and marks made over time.
             </p>
 
-            <div>
+            <p className="text-[var(--color-ink-soft)] text-base sm:text-lg leading-relaxed">
+              She lives and works in the UK and shows her work at local exhibitions and events.
+              Pieces are available directly — enquiries are always welcome.
+            </p>
+
+            <div className="pt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] font-sans text-[#1a1a17] hover:text-[#c4956a] transition-colors duration-200"
+                className="text-[11px] uppercase tracking-[0.2em] text-[#2d8b8b] hover:text-[#e8766a] transition-colors duration-300 inline-flex items-center gap-3"
               >
                 Get in touch
                 <span className="block w-8 h-px bg-current" />
               </Link>
             </div>
+
           </div>
 
-          {/* Sidebar — collection navigator */}
+          {/* SIDEBAR */}
           <div className="lg:pt-4">
-            <div className="bg-[#f2ede7] p-8">
-              <p className="text-[9px] uppercase tracking-[0.35em] text-[#9a9490] font-sans mb-5">
-                Explore the work
+
+            <div className="relative bg-[var(--color-canvas)] border border-black/5 p-8 overflow-hidden">
+
+              <div className="absolute -top-8 -right-8 w-40 h-40 rounded-full bg-[#7aa7a3]/10 blur-[60px]" />
+
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--color-ink-soft)] mb-6">
+                explore the work
               </p>
+
               <div className="space-y-1">
+
                 {categories.map(({ slug, label, description }) => (
                   <Link
                     key={slug}
                     href={`/${slug}`}
-                    className="group flex items-start justify-between py-4 border-b border-[#e6dfd7] last:border-0"
+                    className="group block py-4 border-b border-black/5 last:border-0"
                   >
-                    <div>
-                      <p className="font-serif italic text-xl text-[#1a1a17] group-hover:text-[#c4956a] transition-colors duration-200">
+                    <div className="flex items-center gap-3 mb-1">
+                      <span className="w-3 h-[2px] bg-[#2d8b8b] transition-all duration-300 group-hover:w-5" />
+                      <p className="text-[var(--color-ink)] group-hover:text-[#2d8b8b] transition-colors">
                         {label}
                       </p>
-                      <p className="mt-0.5 text-[#9a9490] text-xs font-sans leading-relaxed">
-                        {description}
-                      </p>
                     </div>
-                    <span className="mt-1 ml-4 text-[#c4956a] opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-sans text-sm">
-                      →
-                    </span>
+
+                    <p className="text-[var(--color-ink-soft)] text-xs pl-6 leading-relaxed">
+                      {description}
+                    </p>
                   </Link>
                 ))}
+
               </div>
             </div>
+
           </div>
 
         </div>
